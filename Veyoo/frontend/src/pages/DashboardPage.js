@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import VoiceInput from '../components/VoiceInput';
+import MultiSelectChips from '../components/MultiSelectChips';
 import CareerAdviserPanel from '../components/CareerAdviserPanel';
 import VideoPanel from '../components/VideoPanel';
 import { auth } from '../firebase';
@@ -13,6 +14,19 @@ const DashboardPage = () => {
   const [messages, setMessages] = useState([]); // { id: number, type: 'user' | 'system', content: string, videoUrl?: string, isLoading?: boolean }
   const [currentInput, setCurrentInput] = useState('');
   const [isGeneratingVideo, setIsGeneratingVideo] = useState(false);
+  const [selectedProfessions, setSelectedProfessions] = useState([]);
+  const professionOptions = [
+    'Engineer',
+    'Doctor',
+    'Designer',
+    'Teacher',
+    'Entrepreneur',
+    'Scientist',
+    'Artist',
+    'Chef',
+    'Nurse',
+    'Pilot'
+  ];
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -74,8 +88,12 @@ const DashboardPage = () => {
     const newSystemMessage = { id: messages.length + 2, type: 'system', content: adviceContent, isLoading: true };
     setMessages(prevMessages => [...prevMessages, newSystemMessage]);
 
-    // Generate video for the prompt
-    generateVideo(text, newSystemMessage.id);
+    // Generate video for the prompt with selected professions context
+    const contextPrefix = selectedProfessions.length
+      ? ` (Professions: ${selectedProfessions.join(', ')})`
+      : '';
+    const finalPrompt = `${text}${contextPrefix}`;
+    generateVideo(finalPrompt, newSystemMessage.id);
   };
 
   const handleLogout = async () => {
@@ -116,6 +134,16 @@ const DashboardPage = () => {
               </div>
             ))}
             <div ref={messagesEndRef} />
+          </div>
+
+          {/* Profession selection */}
+          <div className="mt-4">
+            <MultiSelectChips
+              options={professionOptions}
+              selectedValues={selectedProfessions}
+              onChange={setSelectedProfessions}
+              label="Select professions (multiple)"
+            />
           </div>
 
           {/* Chat Input */}

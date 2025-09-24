@@ -1,0 +1,110 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+npm-packages-offline-cache/
+.cache/
+coverage/
+dist/
+build/
+.vscode/
+.vercel/
+
+# React/CRA
+*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# General env files
+.env
+*.env
+*.secret
+*.key
+
+# Logs
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+develop-eggs/
+.installed.cfg
+pip-wheel-metadata/
+*.manifest
+*.spec
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+ENV/
+env/
+.venv*/
+venv*/
+.env*/
+.pyre/
+.dmypy.json
+.pytype/
+coverage.xml
+htmlcov/
+
+# Virtualenvs in service folders
+Veyoo/**/venv/
+Veyoo/**/.venv/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+
+# Docker
+*.tar
+.dockerignore
+
+# Cloud Build / Artifacts
+cloudbuild-local-*.log
+artifacts/
+
+# Kubernetes
+*.yaml.tmp
+.kube/
+
+# Firebase
+.firebase/
+.cache/firebase/
+.firebaserc.local
+
+# IDEs
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

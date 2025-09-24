@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veyoo-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: veyoo-backend
+  template:
+    metadata:
+      labels:
+        app: veyoo-backend
+    spec:
+      containers:
+      - name: veyoo-backend
+        image: gcr.io/your-gcp-project-id/veyoo-backend:latest # Replace with your image
+        ports:
+        - containerPort: 8080

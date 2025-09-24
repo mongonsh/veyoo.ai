@@ -1,0 +1,16 @@
+swagger: '2.0'
+info:
+  title: Veyoo API
+  description: API for the Veyoo career simulator.
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /simulations:
+    post:
+      summary: Creates a new career simulation.
+      operationId: createSimulation
+      x-google-backend:
+        address: ${backend_address}

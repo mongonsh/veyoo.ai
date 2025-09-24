@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+google-cloud-storage
+# veo - Assuming 'veo' is the library name

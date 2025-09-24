@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+google-cloud-aiplatform
+# adk - Assuming 'adk' is the library name
